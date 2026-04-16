@@ -16,14 +16,12 @@
         <p style="color:orange">{{ $message }}</p>
         @enderror
         <br>
-
         <label>Email:</label><br>
         <input type="email" name="email" value="{{ old('email') }}"><br>
         @error('email')
         <p style="color:orange">{{ $message }}</p>
         @enderror
         <br>
-
         <label>Phone:</label><br>
         <input type="number" name="phone" value="{{ old('phone') }}"><br>
         @error('phone')

@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormEiController;
+use App\Http\Controllers\UploadEIController;
 
 
-Route::get('/formei', [FormEiController::class, 'index']);
-Route::post('/submit-formei', [FormEiController::class, 'showform']);
+// Route::get('/formei', [FormEiController::class, 'index']);
+// Route::post('/submit-formei', [FormEiController::class, 'showform']);
 
 // 
 
@@ -20,3 +21,14 @@ Route::post('/submit-formei', [FormEiController::class, 'showform']);
 // 9. Form repopulation (old input) in the code
 
 // 
+
+
+
+// Route::get('/upload', [UploadEIController::class, 'show']);
+// Route::post('/upload', [UploadEIController::class, 'upload']);
+
+Route::get('/',function()
+{
+    return view('homeEI');
+}
+);
