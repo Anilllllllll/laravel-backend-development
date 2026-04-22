@@ -27,8 +27,23 @@ use App\Http\Controllers\UploadEIController;
 // Route::get('/upload', [UploadEIController::class, 'show']);
 // Route::post('/upload', [UploadEIController::class, 'upload']);
 
-Route::get('/',function()
-{
-    return view('homeEI');
-}
-);
+// Route::get('/',function()
+// {
+//     return view('homeEI');
+// }
+// );
+
+Route::get('/', function () {
+    return view('homeEI'); // FIXED
+});
+
+Route::get('/lang/{locale}', function ($locale) {
+
+    $allowed = ['en', 'hi', 'ta', 'pa']; // FIXED
+
+    if (in_array($locale, $allowed)) {
+        session(['locale' => $locale]);
+    }
+
+    return redirect()->back();
+});
