@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormEiController;
 use App\Http\Controllers\UploadEIController;
-
+use App\Http\Controllers\EmailEIController;
 
 // Route::get('/formei', [FormEiController::class, 'index']);
 // Route::post('/submit-formei', [FormEiController::class, 'showform']);
@@ -33,17 +33,18 @@ use App\Http\Controllers\UploadEIController;
 // }
 // );
 
-Route::get('/', function () {
-    return view('homeEI'); // FIXED
-});
+// Route::get('/', function () {
+//     return view('homeEI'); // FIXED
+// });
 
-Route::get('/lang/{locale}', function ($locale) {
+// Route::get('/lang/{locale}', function ($locale) {
 
-    $allowed = ['en', 'hi', 'ta', 'pa']; // FIXED
+//     $allowed = ['en', 'hi', 'ta', 'pa']; // FIXED
 
-    if (in_array($locale, $allowed)) {
-        session(['locale' => $locale]);
-    }
+//     if (in_array($locale, $allowed)) {
+//         session(['locale' => $locale]);
+//     }
 
-    return redirect()->back();
-});
+//     return redirect()->back();
+// });
+Route::get('/send-email', [EmailEIController::class, 'send']);

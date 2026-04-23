@@ -14,18 +14,13 @@ class TestingEIMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public $data;       
-    public function __construct()
+    public $data;
+
+    public function __construct($data)
     {
-        $this->data=$data;
+        $this->data = $data;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -33,26 +28,22 @@ class TestingEIMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
-            view: 'emailri',
-            with:['name' => $this.data['name']]
+            view: 'emailei',
+            with: [
+                'data' => $this->data   // pass full data
+            ]
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, Attachment>
-     */
     public function attachments(): array
     {
         return [
-            Attachement::fromPath(public_path('example1.pdf'))->as('exam.pdf')->withMine('application/pdf'),
+            Attachment::fromPath(public_path('example1.pdf'))
+                ->as('exam.pdf')
+                ->withMime('application/pdf'),
         ];
     }
 }
