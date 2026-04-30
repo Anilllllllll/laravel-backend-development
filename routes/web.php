@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormEiController;
 use App\Http\Controllers\UploadEIController;
 use App\Http\Controllers\EmailEIController;
-
+use App\Http\Controllers\SessionEIController;
 // Route::get('/formei', [FormEiController::class, 'index']);
 // Route::post('/submit-formei', [FormEiController::class, 'showform']);
 
@@ -47,4 +47,17 @@ use App\Http\Controllers\EmailEIController;
 
 //     return redirect()->back();
 // });
-Route::get('/send-email', [EmailEIController::class, 'send']);
+// Route::get('/send-email', [EmailEIController::class, 'send']);
+
+
+
+Route::view('/loginform', 'myformEI');
+
+Route::post('/submit', [SessionEIController::class, 'login']);
+
+Route::get('/form', function () {
+    return view('sessionEI');
+});
+
+Route::get('/logout', [SessionEIController::class, 'logout']);
+

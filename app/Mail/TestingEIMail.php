@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 
 class TestingEIMail extends Mailable
 {
-    use Queueable, SerializesModels;
+        use Queueable, SerializesModels;
 
     public $data;
 
